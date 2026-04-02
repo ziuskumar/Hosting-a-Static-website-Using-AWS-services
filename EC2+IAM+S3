@@ -1,0 +1,97 @@
+🧾 AWS Project Report (S3 → EC2 → HTTP Hosting)
+🟢 1. Title Page
+Project Title: Hosting a Static Website using AWS S3 and EC2
+Name
+Roll No
+Subject
+Date
+🟢 2. Introduction (Write this in report)
+Writing
+
+This project demonstrates how to deploy and host a static website using Amazon Web Services (AWS). The workflow includes uploading files to Amazon S3, transferring them to an EC2 instance, and hosting the content over HTTP using a web server.
+
+The objective is to understand cloud storage, virtual servers, and deployment processes in AWS. This project provides hands-on experience with services like Amazon S3 and Amazon EC2.
+
+🟢 3. Tools & Technologies
+AWS S3 (Storage)
+AWS EC2 (Virtual Server)
+Linux (Amazon Linux / Ubuntu)
+Apache Web Server
+AWS CLI
+🟢 4. Architecture (Draw this diagram in your report)
+Local System → S3 Bucket → EC2 Instance → HTTP Hosting (Browser)
+🔥 NOW MAIN PART (STEPS + COMMANDS + SCREENSHOTS)
+🟢 5. Step 1: Upload File to S3
+📌 What to do:
+Go to AWS Management Console
+Open S3
+Create Bucket
+Upload your project files (HTML/CSS)
+📸 Screenshot to take:
+Bucket created
+File uploaded
+🟢 6. Step 2: Launch EC2 Instance
+📌 Steps:
+Go to Amazon EC2
+Click Launch Instance
+Choose:
+OS: Amazon Linux / Ubuntu
+Instance type: t2.micro (Free tier)
+Create Key Pair
+Allow:
+SSH (22)
+HTTP (80)
+📸 Screenshot:
+Instance running
+🟢 7. Step 3: Connect to EC2 (IMPORTANT)
+💻 Command (in terminal):
+ssh -i your-key.pem ec2-user@your-public-ip
+🟢 8. Step 4: Install Apache Web Server
+💻 Commands:
+sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+📸 Screenshot:
+Apache installed / running
+🟢 9. Step 5: Install AWS CLI (if not installed)
+sudo yum install aws-cli -y
+🟢 10. Step 6: Configure AWS CLI
+aws configure
+
+Enter:
+
+Access Key
+Secret Key
+Region (e.g., ap-south-1)
+
+📸 Screenshot this step
+
+🟢 11. Step 7: Copy File from S3 to EC2
+💻 Command:
+aws s3 cp s3://your-bucket-name/your-file.html .
+
+OR for full folder:
+
+aws s3 sync s3://your-bucket-name /var/www/html/
+🟢 12. Step 8: Move Files to Web Directory
+sudo cp your-file.html /var/www/html/index.html
+🟢 13. Step 9: Start Hosting (HTTP)
+
+Now open browser:
+
+http://your-ec2-public-ip
+
+🎉 Your website will be live!
+
+📸 Screenshot:
+Website running in browser
+🟢 14. Output (Write this)
+Writing
+
+The website was successfully hosted using AWS services. Files were uploaded to Amazon S3, transferred to an EC2 instance, and served using the Apache web server. The final output was accessible through a public IP over HTTP.
+
+🟢 15. Conclusion
+Writing
+
+This project helped in understanding the integration of AWS services like S3 and EC2. It provided practical knowledge of cloud storage, server configuration, and web hosting. The process demonstrates how scalable and efficient cloud deployment can be achieved using AWS.
